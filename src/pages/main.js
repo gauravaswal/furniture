@@ -31,6 +31,7 @@ const Main = () => {
         setProduct(productResult?.data?.data)
     }
     return (
+        
         <div id="home2">
             <Header />
             <div className="main-content">

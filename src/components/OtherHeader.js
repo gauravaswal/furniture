@@ -100,13 +100,13 @@ const OtherHeader = () => {
                                 <div className="menu navbar collapse navbar-collapse">
                                     <ul className="menu-top navbar-nav">
                                         <li>
-                                            <a href="#" className="parent">Home</a>
+                                            <a href="/" className="parent">Home</a>
                                         </li>
                                         <li>
                                             <a href="#" className="parent">Blog</a>
                                         </li>
                                         <li className="nav-link">
-                                            <a href="#" className="parent">Products</a>
+                                            <a href="/product-listing" className="parent">Products</a>
                                         </li>
                                         <li>
                                             <a href="contact.html" className="parent">Contact US</a>

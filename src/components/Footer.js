@@ -1,169 +1,74 @@
 const Footer = ()=>{
     return (
         <>
-         <footer className="footer-one">
-        <div className="inner-footer background-none">
-            <div className="container">
-                <div className="footer-top">
-                    <div className="row">
-                        <div className="tiva-html col-lg-3 col-md-3 col-xs-12">
-                            <div className="block">
-                                <div className="block-content">
-                                    <div className="title-block">
-                                        WHO WE ARE
-                                    </div>
-                                    <ul>
-                                        <li>
-                                            <a href="#">About Us</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Reasons to shop</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">What our customers say</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Meet the teaml</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Contact our buyers</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Cookies & privacy</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="tiva-html col-lg-3 col-md-3">
-                            <div className="block">
-                                <div className="block-content">
-                                    <div className="title-block">
-                                        CUSTOMER SERVICES
-                                    </div>
-                                    <ul>
-                                        <li>
-                                            <a href="#">Contact Us</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Help and advice</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Delivery</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Terms and conditions</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Refund Policy</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">FAQs</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="tiva-html col-lg-6 col-md-6">
-                            <div className="block">
-                                <div className="block-content">
-                                    <div className="title-block">
-                                        CONTACT US
-                                    </div>
-                                    <div className="contact-content">
-                                        <div className="data align-self-stretch d-flex">
-                                            <i className="fa fa-home float-left" aria-hidden="true"></i>
-                                            <div className="content-data">
-                                                <b className="mr-2">Showroom:</b>123 Suspendis matti, Visaosang Building, VST District NY Accums,
-                                                Kansas City, North American
-                                            </div>
-                                        </div>
-                                        <div className="data align-self-stretch d-flex">
-                                            <i className="fa fa-clock-o float-left" aria-hidden="true"></i>
-                                            <div className="content-data">
-                                                <b className="mr-2">Opening Hours:</b>Monday - Sunday / 08.00AM - 19.00 (Except Holidays)</div>
-                                        </div>
-                                        <div className="support align-self-stretch d-flex">
-                                            <div className="data d-flex align-self-stretch mail-support">
-                                                <i className="fa fa-envelope" aria-hidden="true"></i>
-                                                <div className="email">support@domain.com</div>
-                                            </div>
-                                            <div className="data d-flex align-self-stretch phone-support">
-                                                <div className="title-icon">
-                                                    <i className="fa fa-phone" aria-hidden="true"></i>
-                                                </div>
-                                                <div>+0012-345-67890</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div className="container-fluid bg-dark text-secondary mt-5 pt-5">
+        <div className="row px-xl-5 pt-5">
+            <div className="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
+                <h5 className="text-secondary text-uppercase mb-4">Get In Touch</h5>
+                <p className="mb-4">No dolore ipsum accusam no lorem. Invidunt sed clita kasd clita et et dolor sed dolor. Rebum tempor no vero est magna amet no</p>
+                <p className="mb-2"><i className="fa fa-map-marker-alt text-primary mr-3"></i>123 Street, New York, USA</p>
+                <p className="mb-2"><i className="fa fa-envelope text-primary mr-3"></i>info@example.com</p>
+                <p className="mb-0"><i className="fa fa-phone-alt text-primary mr-3"></i>+012 345 67890</p>
             </div>
-        </div>
-        <div className="policy-home">
-            <div className="container">
+            <div className="col-lg-8 col-md-12">
                 <div className="row">
-                    <div className="col-lg-4 col-md-4">
-                        <div className="block">
-                            <div className="block-content">
-                                <div className="policy-item">
-                                    <div className="policy-content iconpolicy1">
-                                        <img src="img/home/home1-policy.png" alt="img" />
-                                        <div className="policy-name mb-5">FREE DELIVERY FROM $ 250</div>
-                                        <div className="policy-des">Lorem ipsum dolor amet consectetur</div>
-                                    </div>
-                                </div>
-                            </div>
+                    <div className="col-md-4 mb-5">
+                        <h5 className="text-secondary text-uppercase mb-4">Quick Shop</h5>
+                        <div className="d-flex flex-column justify-content-start">
+                            <a className="text-secondary mb-2" href="#"><i className="fa fa-angle-right mr-2"></i>Home</a>
+                            <a className="text-secondary mb-2" href="#"><i className="fa fa-angle-right mr-2"></i>Our Shop</a>
+                            <a className="text-secondary mb-2" href="#"><i className="fa fa-angle-right mr-2"></i>Shop Detail</a>
+                            <a className="text-secondary mb-2" href="#"><i className="fa fa-angle-right mr-2"></i>Shopping Cart</a>
+                            <a className="text-secondary mb-2" href="#"><i className="fa fa-angle-right mr-2"></i>Checkout</a>
+                            <a className="text-secondary" href="#"><i className="fa fa-angle-right mr-2"></i>Contact Us</a>
                         </div>
                     </div>
-                    <div className="tiva-html col-lg-4 col-md-4">
-                        <div className="block">
-                            <div className="block-content">
-                                <div className="policy-item">
-                                    <div className="policy-content iconpolicy2">
-                                        <img src="img/home/home1-policy2.png" alt="img" />
-                                        <div className="policy-name mb-5">FREE INSTALLATION</div>
-                                        <div className="policy-des">Lorem ipsum dolor amet consectetur</div>
-                                    </div>
-                                </div>
-                            </div>
+                    <div className="col-md-4 mb-5">
+                        <h5 className="text-secondary text-uppercase mb-4">My Account</h5>
+                        <div className="d-flex flex-column justify-content-start">
+                            <a className="text-secondary mb-2" href="#"><i className="fa fa-angle-right mr-2"></i>Home</a>
+                            <a className="text-secondary mb-2" href="#"><i className="fa fa-angle-right mr-2"></i>Our Shop</a>
+                            <a className="text-secondary mb-2" href="#"><i className="fa fa-angle-right mr-2"></i>Shop Detail</a>
+                            <a className="text-secondary mb-2" href="#"><i className="fa fa-angle-right mr-2"></i>Shopping Cart</a>
+                            <a className="text-secondary mb-2" href="#"><i className="fa fa-angle-right mr-2"></i>Checkout</a>
+                            <a className="text-secondary" href="#"><i className="fa fa-angle-right mr-2"></i>Contact Us</a>
                         </div>
                     </div>
-                    <div className="tiva-html col-lg-4 col-md-4">
-                        <div className="block">
-                            <div className="block-content">
-                                <div className="policy-item">
-                                    <div className="policy-content iconpolicy3">
-                                        <img src="img/home/home1-policy3.png" alt="img" />
-                                        <div className="policy-name mb-5">MONEY BACK GUARANTEED</div>
-                                        <div className="policy-des">Lorem ipsum dolor amet consectetur</div>
-                                    </div>
+                    <div className="col-md-4 mb-5">
+                        <h5 className="text-secondary text-uppercase mb-4">Newsletter</h5>
+                        <p>Duo stet tempor ipsum sit amet magna ipsum tempor est</p>
+                        <form action="">
+                            <div className="input-group">
+                                <input type="text" className="form-control" placeholder="Your Email Address" />
+                                <div className="input-group-append">
+                                    <button className="btn btn-primary">Sign Up</button>
                                 </div>
                             </div>
+                        </form>
+                        <h6 className="text-secondary text-uppercase mt-4 mb-3">Follow Us</h6>
+                        <div className="d-flex">
+                            <a className="btn btn-primary btn-square mr-2" href="#"><i className="fab fa-twitter"></i></a>
+                            <a className="btn btn-primary btn-square mr-2" href="#"><i className="fab fa-facebook-f"></i></a>
+                            <a className="btn btn-primary btn-square mr-2" href="#"><i className="fab fa-linkedin-in"></i></a>
+                            <a className="btn btn-primary btn-square" href="#"><i className="fab fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-		
-        <div id="tiva-copyright">
-            <div className="container">
-                <div className="row">
-                    <div className="payment-image col-md-6 align-items-center justify-content-md-start justify-content-sm-center d-flex flex-center">
-                        <span>
-                            <a target="_blank" href="https://www.templateshub.net">Templates Hub</a>
-                        </span>
-                    </div>
-                    <div className="col-md-6 align-items-center justify-content-md-end justify-content-sm-center d-flex pb-xs-max-20 flex-center">
-                        <img src="img/home/payment.jpg" alt="img" />
-                    </div>
-                </div>
+        <div className="row border-top mx-xl-5 py-4" style={{"borderColor": "rgba(256, 256, 256, .1) !important"}}>
+            <div className="col-md-6 px-xl-0">
+                <p className="mb-md-0 text-center text-md-left text-secondary">
+                    &copy; <a className="text-primary" href="#">Domain</a>. All Rights Reserved. Designed
+                    by
+                    <a className="text-primary" href="https://htmlcodex.com">HTML Codex</a>
+                </p>
+            </div>
+            <div className="col-md-6 px-xl-0 text-center text-md-right">
+                <img className="img-fluid" src="img/payments.png" alt="" />
             </div>
         </div>
-    </footer>
+    </div>
         
         </>
     )

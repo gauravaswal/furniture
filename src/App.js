@@ -1,13 +1,16 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import Main from "../src/pages/main"
-import Login from "../src/pages/signin"
+import Product from "../src/pages/product-detail"
+import 'owl.carousel/dist/assets/owl.carousel.css';
+import 'owl.carousel';
+import "./App.css"
 const App = ()=>{
 return (
     <BrowserRouter>
        <Routes>
          <Route path="/" element={<Main />} />
-         <Route path="/login" element={<Login />} />
+         <Route path="/product/:id" element={<Product />} />
 
        </Routes>
     </BrowserRouter>

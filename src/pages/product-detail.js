@@ -1,512 +1,400 @@
-import Header from "../components/OtherHeader";
-import Footer from "../components/Footer";
 import React, { useEffect, useState } from 'react';
 import { Apis } from "../helper/ApiEndpoints";
 import { axiosRequest } from "../helper/Api";
 import { useParams } from 'react-router-dom';
-import Sidebar from "../components/Sidebar";
-import RelatedProduct from "../components/RelatedProduct"
-import Loader from "../components/Loader";
-
-import Navbar from "../components/Navbar";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 const ProductDetail = () => {
-    const [product, setProduct] = useState({})
-    const [isLoading, setIsLoading] = useState(false);
-    const [relatedproducts, setRelatedProduct] = useState([])
-    const [category, setCategory] = useState([])
-    const { id } = useParams();
-    useEffect(() => {
-        (async () => {
-            setIsLoading(true)
-            const categoryresult = await axiosRequest(Apis.CategorySubcategory, {}, "get")
-            setCategory(categoryresult?.data?.data)
-            const productResult = await axiosRequest(Apis.ProductView + `/` + id, {}, "get")
-            if (productResult.status == 200) {
-                const productListResult = await axiosRequest(Apis.ProductList + `?type=relatedproduct&productId=${id}&categoryId=${productResult?.data?.data?.categoryProduct?.id}&limit=3`, {}, "get")
-                setIsLoading(false)
-                setRelatedProduct(productListResult?.data?.data)
-                setProduct(productResult?.data?.data)
-            }
-        })()
-    }, [])
     return (
+        <>
+        <Header />
+    <div className="container-fluid">
+        <div className="row px-xl-5">
+            <div className="col-12">
+                <nav className="breadcrumb bg-light mb-30">
+                    <a className="breadcrumb-item text-dark" href="#">Home</a>
+                    <a className="breadcrumb-item text-dark" href="#">Shop</a>
+                    <span className="breadcrumb-item active">Shop Detail</span>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div className="container-fluid pb-5">
+        <div className="row px-xl-5">
+            <div className="col-lg-5 mb-30">
+                <div id="product-carousel" className="carousel slide" data-ride="carousel">
+                    <div className="carousel-inner bg-light">
+                        <div className="carousel-item active">
+                            <img className="w-100 h-100" src="img/product-1.jpg" alt="Image" />
+                        </div>
+                        <div className="carousel-item">
+                            <img className="w-100 h-100" src="img/product-2.jpg" alt="Image" />
+                        </div>
+                        <div className="carousel-item">
+                            <img className="w-100 h-100" src="img/product-3.jpg" alt="Image" />
+                        </div>
+                        <div className="carousel-item">
+                            <img className="w-100 h-100" src="img/product-4.jpg" alt="Image" />
+                        </div>
+                    </div>
+                    <a className="carousel-control-prev" href="#product-carousel" data-slide="prev">
+                        <i className="fa fa-2x fa-angle-left text-dark"></i>
+                    </a>
+                    <a className="carousel-control-next" href="#product-carousel" data-slide="next">
+                        <i className="fa fa-2x fa-angle-right text-dark"></i>
+                    </a>
+                </div>
+            </div>
 
-        <div id="product-detail">
-            {isLoading ? <Loader /> : ""}
-
-            <Header />
-            <div className="main-content">
-                <div id="wrapper-site">
-                    <div id="content-wrapper">
-                        <div id="main">
-                            <div className="page-home">
-
-                                <Navbar />
-                                {/* <nav className="breadcrumb-bg">
-                                    <div className="container no-index">
-                                        <div className="breadcrumb">
-                                            <ol>
-                                                <li>
-                                                    <a href="#">
-                                                        <span>Home</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        <span>Living Room</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        <span>{product?.categoryProduct?.name}</span>
-                                                    </a>
-                                                </li>
-                                            </ol>
+            <div className="col-lg-7 h-auto mb-30">
+                <div className="h-100 bg-light p-30">
+                    <h3>Product Name Goes Here</h3>
+                    <div className="d-flex mb-3">
+                        <div className="text-primary mr-2">
+                            <small className="fas fa-star"></small>
+                            <small className="fas fa-star"></small>
+                            <small className="fas fa-star"></small>
+                            <small className="fas fa-star-half-alt"></small>
+                            <small className="far fa-star"></small>
+                        </div>
+                        <small className="pt-1">(99 Reviews)</small>
+                    </div>
+                    <h3 className="font-weight-semi-bold mb-4">$150.00</h3>
+                    <p className="mb-4">Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit
+                        clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no sea
+                        Nonumy</p>
+                    <div className="d-flex mb-3">
+                        <strong className="text-dark mr-3">Sizes:</strong>
+                        <form>
+                            <div className="custom-control custom-radio custom-control-inline">
+                                <input type="radio" className="custom-control-input" id="size-1" name="size" />
+                                <label className="custom-control-label" for="size-1">XS</label>
+                            </div>
+                            <div className="custom-control custom-radio custom-control-inline">
+                                <input type="radio" className="custom-control-input" id="size-2" name="size" />
+                                <label className="custom-control-label" for="size-2">S</label>
+                            </div>
+                            <div className="custom-control custom-radio custom-control-inline">
+                                <input type="radio" className="custom-control-input" id="size-3" name="size" />
+                                <label className="custom-control-label" for="size-3">M</label>
+                            </div>
+                            <div className="custom-control custom-radio custom-control-inline">
+                                <input type="radio" className="custom-control-input" id="size-4" name="size" />
+                                <label className="custom-control-label" for="size-4">L</label>
+                            </div>
+                            <div className="custom-control custom-radio custom-control-inline">
+                                <input type="radio" className="custom-control-input" id="size-5" name="size" />
+                                <label className="custom-control-label" for="size-5">XL</label>
+                            </div>
+                        </form>
+                    </div>
+                    <div className="d-flex mb-4">
+                        <strong className="text-dark mr-3">Colors:</strong>
+                        <form>
+                            <div className="custom-control custom-radio custom-control-inline">
+                                <input type="radio" className="custom-control-input" id="color-1" name="color" />
+                                <label className="custom-control-label" for="color-1">Black</label>
+                            </div>
+                            <div className="custom-control custom-radio custom-control-inline">
+                                <input type="radio" className="custom-control-input" id="color-2" name="color" />
+                                <label className="custom-control-label" for="color-2">White</label>
+                            </div>
+                            <div className="custom-control custom-radio custom-control-inline">
+                                <input type="radio" className="custom-control-input" id="color-3" name="color" />
+                                <label className="custom-control-label" for="color-3">Red</label>
+                            </div>
+                            <div className="custom-control custom-radio custom-control-inline">
+                                <input type="radio" className="custom-control-input" id="color-4" name="color" />
+                                <label className="custom-control-label" for="color-4">Blue</label>
+                            </div>
+                            <div className="custom-control custom-radio custom-control-inline">
+                                <input type="radio" className="custom-control-input" id="color-5" name="color" />
+                                <label className="custom-control-label" for="color-5">Green</label>
+                            </div>
+                        </form>
+                    </div>
+                    <div className="d-flex align-items-center mb-4 pt-2">
+                        <div className="input-group quantity mr-3" style={{"width": "130px"}}>
+                            <div className="input-group-btn">
+                                <button className="btn btn-primary btn-minus">
+                                    <i className="fa fa-minus"></i>
+                                </button>
+                            </div>
+                            <input type="text" className="form-control bg-secondary border-0 text-center" value="1" />
+                            <div className="input-group-btn">
+                                <button className="btn btn-primary btn-plus">
+                                    <i className="fa fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <button className="btn btn-primary px-3"><i className="fa fa-shopping-cart mr-1"></i> Add To
+                            Cart</button>
+                    </div>
+                    <div className="d-flex pt-2">
+                        <strong className="text-dark mr-2">Share on:</strong>
+                        <div className="d-inline-flex">
+                            <a className="text-dark px-2" href="">
+                                <i className="fab fa-facebook-f"></i>
+                            </a>
+                            <a className="text-dark px-2" href="">
+                                <i className="fab fa-twitter"></i>
+                            </a>
+                            <a className="text-dark px-2" href="">
+                                <i className="fab fa-linkedin-in"></i>
+                            </a>
+                            <a className="text-dark px-2" href="">
+                                <i className="fab fa-pinterest"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div className="row px-xl-5">
+            <div className="col">
+                <div className="bg-light p-30">
+                    <div className="nav nav-tabs mb-4">
+                        <a className="nav-item nav-link text-dark active" data-toggle="tab" href="#tab-pane-1">Description</a>
+                        <a className="nav-item nav-link text-dark" data-toggle="tab" href="#tab-pane-2">Information</a>
+                        <a className="nav-item nav-link text-dark" data-toggle="tab" href="#tab-pane-3">Reviews (0)</a>
+                    </div>
+                    <div className="tab-content">
+                        <div className="tab-pane fade show active" id="tab-pane-1">
+                            <h4 className="mb-3">Product Description</h4>
+                            <p>Eos no lorem eirmod diam diam, eos elitr et gubergren diam sea. Consetetur vero aliquyam invidunt duo dolores et duo sit. Vero diam ea vero et dolore rebum, dolor rebum eirmod consetetur invidunt sed sed et, lorem duo et eos elitr, sadipscing kasd ipsum rebum diam. Dolore diam stet rebum sed tempor kasd eirmod. Takimata kasd ipsum accusam sadipscing, eos dolores sit no ut diam consetetur duo justo est, sit sanctus diam tempor aliquyam eirmod nonumy rebum dolor accusam, ipsum kasd eos consetetur at sit rebum, diam kasd invidunt tempor lorem, ipsum lorem elitr sanctus eirmod takimata dolor ea invidunt.</p>
+                            <p>Dolore magna est eirmod sanctus dolor, amet diam et eirmod et ipsum. Amet dolore tempor consetetur sed lorem dolor sit lorem tempor. Gubergren amet amet labore sadipscing clita clita diam clita. Sea amet et sed ipsum lorem elitr et, amet et labore voluptua sit rebum. Ea erat sed et diam takimata sed justo. Magna takimata justo et amet magna et.</p>
+                        </div>
+                        <div className="tab-pane fade" id="tab-pane-2">
+                            <h4 className="mb-3">Additional Information</h4>
+                            <p>Eos no lorem eirmod diam diam, eos elitr et gubergren diam sea. Consetetur vero aliquyam invidunt duo dolores et duo sit. Vero diam ea vero et dolore rebum, dolor rebum eirmod consetetur invidunt sed sed et, lorem duo et eos elitr, sadipscing kasd ipsum rebum diam. Dolore diam stet rebum sed tempor kasd eirmod. Takimata kasd ipsum accusam sadipscing, eos dolores sit no ut diam consetetur duo justo est, sit sanctus diam tempor aliquyam eirmod nonumy rebum dolor accusam, ipsum kasd eos consetetur at sit rebum, diam kasd invidunt tempor lorem, ipsum lorem elitr sanctus eirmod takimata dolor ea invidunt.</p>
+                            <div className="row">
+                                <div className="col-md-6">
+                                    <ul className="list-group list-group-flush">
+                                        <li className="list-group-item px-0">
+                                            Sit erat duo lorem duo ea consetetur, et eirmod takimata.
+                                        </li>
+                                        <li className="list-group-item px-0">
+                                            Amet kasd gubergren sit sanctus et lorem eos sadipscing at.
+                                        </li>
+                                        <li className="list-group-item px-0">
+                                            Duo amet accusam eirmod nonumy stet et et stet eirmod.
+                                        </li>
+                                        <li className="list-group-item px-0">
+                                            Takimata ea clita labore amet ipsum erat justo voluptua. Nonumy.
+                                        </li>
+                                      </ul> 
+                                </div>
+                                <div className="col-md-6">
+                                    <ul className="list-group list-group-flush">
+                                        <li className="list-group-item px-0">
+                                            Sit erat duo lorem duo ea consetetur, et eirmod takimata.
+                                        </li>
+                                        <li className="list-group-item px-0">
+                                            Amet kasd gubergren sit sanctus et lorem eos sadipscing at.
+                                        </li>
+                                        <li className="list-group-item px-0">
+                                            Duo amet accusam eirmod nonumy stet et et stet eirmod.
+                                        </li>
+                                        <li className="list-group-item px-0">
+                                            Takimata ea clita labore amet ipsum erat justo voluptua. Nonumy.
+                                        </li>
+                                      </ul> 
+                                </div>
+                            </div>
+                        </div>
+                        <div className="tab-pane fade" id="tab-pane-3">
+                            <div className="row">
+                                <div className="col-md-6">
+                                    <h4 className="mb-4">1 review for "Product Name"</h4>
+                                    <div className="media mb-4">
+                                        <img src="img/user.jpg" alt="Image" className="img-fluid mr-3 mt-1" style={{"width": "45px"}} />
+                                        <div className="media-body">
+                                            <h6>John Doe<small> - <i>01 Jan 2045</i></small></h6>
+                                            <div className="text-primary mb-2">
+                                                <i className="fas fa-star"></i>
+                                                <i className="fas fa-star"></i>
+                                                <i className="fas fa-star"></i>
+                                                <i className="fas fa-star-half-alt"></i>
+                                                <i className="far fa-star"></i>
+                                            </div>
+                                            <p>Diam amet duo labore stet elitr ea clita ipsum, tempor labore accusam ipsum et no at. Kasd diam tempor rebum magna dolores sed sed eirmod ipsum.</p>
                                         </div>
                                     </div>
-                                </nav> */}
-                                <div className="container">
-                                    <div className="content">
-                                        <div className="row">
-                                            <div className="sidebar-3 sidebar-collection col-lg-3 col-md-3 col-sm-4">
-
-                                                <Sidebar category={category} />
-
-
-                                                <div className="sidebar-block">
-                                                    <div className="title-block">
-                                                        Best seller
-                                                    </div>
-                                                    <div className="product-content tab-content">
-                                                        <div className="row">
-                                                            <div className="item col-md-12">
-                                                                <div className="product-miniature item-one first-item d-flex">
-                                                                    <div className="thumbnail-container border">
-                                                                        <a href="product-detail.html">
-                                                                            <img className="img-fluid image-cover" src="img/product/1.jpg" alt="img" />
-                                                                            <img className="img-fluid image-secondary" src="img/product/22.jpg" alt="img" />
-                                                                        </a>
-                                                                    </div>
-                                                                    <div className="product-description">
-                                                                        <div className="product-groups">
-                                                                            <div className="product-title">
-                                                                                <a href="product-detail.html">Nulla et justo augue</a>
-                                                                            </div>
-                                                                            <div className="rating">
-                                                                                <div className="star-content">
-                                                                                    <div className="star"></div>
-                                                                                    <div className="star"></div>
-                                                                                    <div className="star"></div>
-                                                                                    <div className="star"></div>
-                                                                                    <div className="star"></div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div className="product-group-price">
-                                                                                <div className="product-price-and-shipping">
-                                                                                    <span className="price">£28.08</span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div className="item col-md-12">
-                                                                <div className="product-miniature item-one first-item d-flex">
-                                                                    <div className="thumbnail-container border">
-                                                                        <a href="product-detail.html">
-                                                                            <img className="img-fluid image-cover" src="img/product/2.jpg" alt="img" />
-                                                                            <img className="img-fluid image-secondary" src="img/product/11.jpg" alt="img" />
-                                                                        </a>
-                                                                    </div>
-                                                                    <div className="product-description">
-                                                                        <div className="product-groups">
-                                                                            <div className="product-title">
-                                                                                <a href="product-detail.html">Nulla et justo augue</a>
-                                                                            </div>
-                                                                            <div className="rating">
-                                                                                <div className="star-content">
-                                                                                    <div className="star"></div>
-                                                                                    <div className="star"></div>
-                                                                                    <div className="star"></div>
-                                                                                    <div className="star"></div>
-                                                                                    <div className="star"></div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div className="product-group-price">
-                                                                                <div className="product-price-and-shipping">
-                                                                                    <span className="price">£31.08</span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div className="item col-md-12">
-                                                                <div className="product-miniature item-one first-item d-flex">
-                                                                    <div className="thumbnail-container border">
-                                                                        <a href="product-detail.html">
-                                                                            <img className="img-fluid image-cover" src="img/product/3.jpg" alt="img" />
-                                                                            <img className="img-fluid image-secondary" src="img/product/14.jpg" alt="img" />
-                                                                        </a>
-                                                                    </div>
-                                                                    <div className="product-description">
-                                                                        <div className="product-groups">
-                                                                            <div className="product-title">
-                                                                                <a href="product-detail.html">Nulla et justo augue</a>
-                                                                            </div>
-                                                                            <div className="rating">
-                                                                                <div className="star-content">
-                                                                                    <div className="star"></div>
-                                                                                    <div className="star"></div>
-                                                                                    <div className="star"></div>
-                                                                                    <div className="star"></div>
-                                                                                    <div className="star"></div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div className="product-group-price">
-                                                                                <div className="product-price-and-shipping">
-                                                                                    <span className="price">£20.08</span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                            <div className="col-sm-8 col-lg-9 col-md-9">
-                                                <div className="main-product-detail">
-                                                    <h2>{product?.name}</h2>
-                                                    <div className="product-single row">
-                                                        <div className="product-detail col-xs-12 col-md-5 col-sm-5">
-                                                            <div className="page-content" id="content">
-                                                                <div className="images-container">
-                                                                    <div className="js-qv-mask mask tab-content border">
-                                                                        {product && product.productImages?.length ? product?.productImages.map((item, index) => {
-                                                                            if (index == 0) {
-                                                                                return <div id="item1" className="tab-pane fade active in show">
-                                                                                    <img src={process.env.REACT_APP_API_URL_SERVICE + item.image} alt="img" />
-                                                                                </div>
-                                                                            } else {
-
-                                                                                return <div id={"item" + index} className="tab-pane fade">
-                                                                                    <img src={process.env.REACT_APP_API_URL_SERVICE + item.image} alt="img" />
-                                                                                </div>
-                                                                            }
-                                                                        })
-                                                                            : <div id="item3" className="tab-pane fade">
-                                                                                <img src="img/product/1.jpg" alt="img" />
-                                                                            </div>
-                                                                        }
-                                                                        <div className="layer hidden-sm-down" data-toggle="modal" data-target="#product-modal">
-                                                                            <i className="fa fa-expand"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                    <ul className="product-tab nav nav-tabs d-flex">
-                                                                        {product && product.productImages?.length ? product?.productImages.map((item, index) => {
-                                                                            if (index == 0) {
-                                                                                return <li className="active col">
-                                                                                    <a href="#item1" data-toggle="tab" aria-expanded="true" className="active show">
-                                                                                        <img src={process.env.REACT_APP_API_URL_SERVICE + item.image} alt="img" />
-                                                                                    </a>
-                                                                                </li>
-
-                                                                            } else {
-
-                                                                                return <li className="col">
-                                                                                    <a href="#item2" data-toggle="tab">
-                                                                                        <img src={process.env.REACT_APP_API_URL_SERVICE + item.image} alt="img" />
-                                                                                    </a>
-                                                                                </li>
-                                                                            }
-                                                                        })
-                                                                            : <li className="col">
-                                                                                <a href="#item2" data-toggle="tab">
-                                                                                    <img src="img/product/1.jpg" alt="img" />
-                                                                                </a>
-                                                                            </li>
-                                                                        }
-                                                                    </ul>
-                                                                    <div className="modal fade" id="product-modal" role="dialog">
-                                                                        <div className="modal-dialog">
-
-                                                                            <div className="modal-content">
-                                                                                <div className="modal-header">
-                                                                                    <div className="modal-body">
-                                                                                        <div className="product-detail">
-                                                                                            <div>
-                                                                                                <div className="images-container">
-                                                                                                    <div className="js-qv-mask mask tab-content">
-                                                                                                        <div id="modal-item1" className="tab-pane fade active in show">
-                                                                                                            <img src="img/product/1.jpg" alt="img" />
-                                                                                                        </div>
-                                                                                                        <div id="modal-item2" className="tab-pane fade">
-                                                                                                            <img src="img/product/2.jpg" alt="img" />
-                                                                                                        </div>
-                                                                                                        <div id="modal-item3" className="tab-pane fade">
-                                                                                                            <img src="img/product/3.jpg" alt="img" />
-                                                                                                        </div>
-                                                                                                        <div id="modal-item4" className="tab-pane fade">
-                                                                                                            <img src="img/product/5.jpg" alt="img" />
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                    <ul className="product-tab nav nav-tabs">
-                                                                                                        <li className="active">
-                                                                                                            <a href="#modal-item1" data-toggle="tab" className=" active show">
-                                                                                                                <img src="img/product/1.jpg" alt="img" />
-                                                                                                            </a>
-                                                                                                        </li>
-                                                                                                        <li>
-                                                                                                            <a href="#modal-item2" data-toggle="tab">
-                                                                                                                <img src="img/product/2.jpg" alt="img" />
-                                                                                                            </a>
-                                                                                                        </li>
-                                                                                                        <li>
-                                                                                                            <a href="#modal-item3" data-toggle="tab">
-                                                                                                                <img src="img/product/3.jpg" alt="img" />
-                                                                                                            </a>
-                                                                                                        </li>
-                                                                                                        <li>
-                                                                                                            <a href="#modal-item4" data-toggle="tab">
-                                                                                                                <img src="img/product/5.jpg" alt="img" />
-                                                                                                            </a>
-                                                                                                        </li>
-                                                                                                    </ul>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div className="product-info col-xs-12 col-md-7 col-sm-7">
-                                                            <div className="detail-description">
-                                                                <div className="price-del">
-                                                                    <span className="price">£{product?.productPrice?.price}</span>
-                                                                    <span className="float-right">
-                                                                        <span className="availb">Availability: </span>
-                                                                        <span className="check">
-                                                                            <i className="fa fa-check-square-o" aria-hidden="true"></i>IN STOCK</span>
-                                                                    </span>
-                                                                </div>
-                                                                <p className="description">Proin gravida nibh vel velit auctor aliquet. Aenean lorem quis bibendum
-                                                                    auctor, nisi elit consequat etiam non auctor.</p>
-                                                                <div className="has-border cart-area">
-                                                                    <div className="product-quantity">
-                                                                        <div className="qty">
-                                                                            <div className="input-group">
-                                                                                <div className="quantity">
-                                                                                    <span className="control-label">QTY : </span>
-                                                                                    <input type="text" name="qty" id="quantity_wanted" value="1" className="input-group form-control" />
-
-                                                                                    <span className="input-group-btn-vertical">
-                                                                                        <button className="btn btn-touchspin js-touchspin bootstrap-touchspin-up" type="button">
-                                                                                            +
-                                                                                        </button>
-                                                                                        <button className="btn btn-touchspin js-touchspin bootstrap-touchspin-down" type="button">
-                                                                                            -
-                                                                                        </button>
-                                                                                    </span>
-                                                                                </div>
-                                                                                <span className="add">
-                                                                                    <button className="btn btn-primary add-to-cart add-item" data-button-action="add-to-cart" type="submit">
-                                                                                        <i className="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                                                        <span>Add to cart</span>
-                                                                                    </button>
-                                                                                    <a className="addToWishlist" href="#">
-                                                                                        <i className="fa fa-heart" aria-hidden="true"></i>
-                                                                                    </a>
-                                                                                </span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className="clearfix"></div>
-                                                                    <p className="product-minimal-quantity">
-                                                                    </p>
-                                                                </div>
-                                                                <div className="rating-comment has-border d-flex">
-                                                                    <div className="review-description d-flex">
-                                                                        <span>REVIEW :</span>
-                                                                        <div className="rating">
-                                                                            <div className="star-content">
-                                                                                <div className="star"></div>
-                                                                                <div className="star"></div>
-                                                                                <div className="star"></div>
-                                                                                <div className="star"></div>
-                                                                                <div className="star"></div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className="read after-has-border">
-                                                                        <a href="#review">
-                                                                            <i className="fa fa-commenting-o color" aria-hidden="true"></i>
-                                                                            <span>READ REVIEWS (3)</span>
-                                                                        </a>
-                                                                    </div>
-                                                                    <div className="apen after-has-border">
-                                                                        <a href="#review">
-                                                                            <i className="fa fa-pencil color" aria-hidden="true"></i>
-                                                                            <span>WRITE A REVIEW</span>
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="content">
-                                                                    <p>SKU :
-                                                                        <span className="content2">
-                                                                            <a href="#">e-02154</a>
-                                                                        </span>
-                                                                    </p>
-                                                                    <p>Categories :
-                                                                        <span className="content2">
-                                                                            <a href="#">{product?.categoryProduct?.name}</a>
-                                                                        </span>
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div className="review">
-                                                        <ul className="nav nav-tabs">
-                                                            <li className="active">
-                                                                <a data-toggle="tab" href="#description" className="active show">Description</a>
-                                                            </li>
-                                                            <li>
-                                                                <a data-toggle="tab" href="#review">Reviews (2)</a>
-                                                            </li>
-                                                        </ul>
-
-                                                        <div className="tab-content">
-                                                            <div id="description" className="tab-pane fade in active show">
-                                                                <p>{product?.description}
-                                                                </p>
-
-                                                            </div>
-
-                                                            <div id="review" className="tab-pane fade">
-                                                                <div className="spr-form">
-                                                                    <div className="user-comment">
-                                                                        <div className="spr-review">
-                                                                            <div className="spr-review-header">
-                                                                                <span className="spr-review-header-byline">
-                                                                                    <strong>Peter Capidal</strong> -
-                                                                                    <span>Apr 14, 2018</span>
-                                                                                </span>
-                                                                                <div className="rating">
-                                                                                    <div className="star-content">
-                                                                                        <div className="star"></div>
-                                                                                        <div className="star"></div>
-                                                                                        <div className="star"></div>
-                                                                                        <div className="star"></div>
-                                                                                        <div className="star"></div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div className="spr-review-content">
-                                                                                <p className="spr-review-content-body">In feugiat venenatis enim, non finibus metus bibendum
-                                                                                    eu. Proin massa justo, eleifend fermentum varius
-                                                                                    quis, semper gravida quam. Cras nec enim sed
-                                                                                    lacus viverra luctus. Nunc quis accumsan mauris.
-                                                                                    Aliquam fermentum sit amet est id scelerisque.
-                                                                                    Nam porta risus metus.</p>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div className="spr-review preview2">
-                                                                            <div className="spr-review-header">
-                                                                                <span className="spr-review-header-byline">
-                                                                                    <strong>David James</strong> -
-                                                                                    <span>Apr 13, 2018</span>
-                                                                                </span>
-                                                                                <div className="rating">
-                                                                                    <div className="star-content">
-                                                                                        <div className="star"></div>
-                                                                                        <div className="star"></div>
-                                                                                        <div className="star"></div>
-                                                                                        <div className="star"></div>
-                                                                                        <div className="star"></div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div className="spr-review-content">
-                                                                                <p className="spr-review-content-body">In feugiat venenatis enim, non finibus metus bibendum
-                                                                                    eu. Proin massa justo, eleifend fermentum varius
-                                                                                    quis, semper gravida quam. Cras nec enim sed
-                                                                                    lacus viverra luctus. Nunc quis accumsan mauris.
-                                                                                    Aliquam fermentum sit amet est id scelerisque.
-                                                                                    Nam porta risus metus.</p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <form method="post" action="#" className="new-review-form">
-                                                                    <input type="hidden" name="review[rating]" value="3" />
-                                                                    <input type="hidden" name="product_id" />
-                                                                    <h3 className="spr-form-title">Write a review</h3>
-                                                                    <fieldset>
-                                                                        <div className="spr-form-review-rating">
-                                                                            <label className="spr-form-label">Your Rating</label>
-                                                                            <fieldset className="ratings">
-                                                                                <input type="radio" id="star5" name="rating" value="5" />
-                                                                                <label className="full" for="star5" title="Awesome - 5 stars"></label>
-                                                                                <input type="radio" id="star4half" name="rating" value="4 and a half" />
-                                                                                <input type="radio" id="star4" name="rating" value="4" />
-                                                                                <label className="full" for="star4" title="Pretty good - 4 stars"></label>
-                                                                                <input type="radio" id="star3half" name="rating" value="3 and a half" />
-                                                                                <input type="radio" id="star3" name="rating" value="3" />
-                                                                                <label className="full" for="star3" title="Meh - 3 stars"></label>
-                                                                                <input type="radio" id="star2half" name="rating" value="2 and a half" />
-                                                                                <input type="radio" id="star2" name="rating" value="2" />
-                                                                                <label className="full" for="star2" title="Kinda bad - 2 stars"></label>
-                                                                                <input type="radio" id="star1half" name="rating" value="1 and a half" />
-                                                                                <input type="radio" id="star1" name="rating" value="1" />
-                                                                                <label className="full" for="star1" title="Sucks big time - 1 star"></label>
-                                                                                <input type="radio" id="starhalf" name="rating" value="half" />
-                                                                            </fieldset>
-                                                                        </div>
-                                                                    </fieldset>
-                                                                    <fieldset className="spr-form-contact">
-                                                                        <div className="spr-form-contact-name">
-                                                                            <input className="spr-form-input spr-form-input-text form-control" value="" placeholder="Enter your name" />
-                                                                        </div>
-                                                                        <div className="spr-form-contact-email">
-                                                                            <input className="spr-form-input spr-form-input-email form-control" value="" placeholder="Enter your email" />
-                                                                        </div>
-                                                                    </fieldset>
-                                                                    <fieldset>
-                                                                        <div className="spr-form-review-body">
-                                                                            <div className="spr-form-input">
-                                                                                <textarea className="spr-form-input-textarea" rows="10" placeholder="Write your comments here"></textarea>
-                                                                            </div>
-                                                                        </div>
-                                                                    </fieldset>
-                                                                    <div className="submit">
-                                                                        <input type="submit" name="addComment" id="submitComment" className="btn btn-default" value="Submit Review" />
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <RelatedProduct product={relatedproducts} />
-                                                </div>
-                                            </div>
+                                </div>
+                                <div className="col-md-6">
+                                    <h4 className="mb-4">Leave a review</h4>
+                                    <small>Your email address will not be published. Required fields are marked *</small>
+                                    <div className="d-flex my-3">
+                                        <p className="mb-0 mr-2">Your Rating * :</p>
+                                        <div className="text-primary">
+                                            <i className="far fa-star"></i>
+                                            <i className="far fa-star"></i>
+                                            <i className="far fa-star"></i>
+                                            <i className="far fa-star"></i>
+                                            <i className="far fa-star"></i>
                                         </div>
                                     </div>
+                                    <form>
+                                        <div className="form-group">
+                                            <label for="message">Your Review *</label>
+                                            <textarea id="message" cols="30" rows="5" className="form-control"></textarea>
+                                        </div>
+                                        <div className="form-group">
+                                            <label for="name">Your Name *</label>
+                                            <input type="text" className="form-control" id="name" />
+                                        </div>
+                                        <div className="form-group">
+                                            <label for="email">Your Email *</label>
+                                            <input type="email" className="form-control" id="email" />
+                                        </div>
+                                        <div className="form-group mb-0">
+                                            <input type="submit" value="Leave Your Review" className="btn btn-primary px-3" />
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <Footer />
         </div>
+    </div>
+    <div className="container-fluid py-5">
+        <h2 className="section-title position-relative text-uppercase mx-xl-5 mb-4"><span className="bg-secondary pr-3">You May Also Like</span></h2>
+        <div className="row px-xl-5">
+            <div className="col">
+                <div className="owl-carousel related-carousel">
+                    <div className="product-item bg-light">
+                        <div className="product-img position-relative overflow-hidden">
+                            <img className="img-fluid w-100" src="img/product-1.jpg" alt="" />
+                            <div className="product-action">
+                                <a className="btn btn-outline-dark btn-square" href=""><i className="fa fa-shopping-cart"></i></a>
+                                <a className="btn btn-outline-dark btn-square" href=""><i className="far fa-heart"></i></a>
+                                <a className="btn btn-outline-dark btn-square" href=""><i className="fa fa-sync-alt"></i></a>
+                                <a className="btn btn-outline-dark btn-square" href=""><i className="fa fa-search"></i></a>
+                            </div>
+                        </div>
+                        <div className="text-center py-4">
+                            <a className="h6 text-decoration-none text-truncate" href="">Product Name Goes Here</a>
+                            <div className="d-flex align-items-center justify-content-center mt-2">
+                                <h5>$123.00</h5><h6 className="text-muted ml-2"><del>$123.00</del></h6>
+                            </div>
+                            <div className="d-flex align-items-center justify-content-center mb-1">
+                                <small className="fa fa-star text-primary mr-1"></small>
+                                <small className="fa fa-star text-primary mr-1"></small>
+                                <small className="fa fa-star text-primary mr-1"></small>
+                                <small className="fa fa-star text-primary mr-1"></small>
+                                <small className="fa fa-star text-primary mr-1"></small>
+                                <small>(99)</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="product-item bg-light">
+                        <div className="product-img position-relative overflow-hidden">
+                            <img className="img-fluid w-100" src="img/product-2.jpg" alt="" />
+                            <div className="product-action">
+                                <a className="btn btn-outline-dark btn-square" href=""><i className="fa fa-shopping-cart"></i></a>
+                                <a className="btn btn-outline-dark btn-square" href=""><i className="far fa-heart"></i></a>
+                                <a className="btn btn-outline-dark btn-square" href=""><i className="fa fa-sync-alt"></i></a>
+                                <a className="btn btn-outline-dark btn-square" href=""><i className="fa fa-search"></i></a>
+                            </div>
+                        </div>
+                        <div className="text-center py-4">
+                            <a className="h6 text-decoration-none text-truncate" href="">Product Name Goes Here</a>
+                            <div className="d-flex align-items-center justify-content-center mt-2">
+                                <h5>$123.00</h5><h6 className="text-muted ml-2"><del>$123.00</del></h6>
+                            </div>
+                            <div className="d-flex align-items-center justify-content-center mb-1">
+                                <small className="fa fa-star text-primary mr-1"></small>
+                                <small className="fa fa-star text-primary mr-1"></small>
+                                <small className="fa fa-star text-primary mr-1"></small>
+                                <small className="fa fa-star text-primary mr-1"></small>
+                                <small className="fa fa-star text-primary mr-1"></small>
+                                <small>(99)</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="product-item bg-light">
+                        <div className="product-img position-relative overflow-hidden">
+                            <img className="img-fluid w-100" src="img/product-3.jpg" alt="" />
+                            <div className="product-action">
+                                <a className="btn btn-outline-dark btn-square" href=""><i className="fa fa-shopping-cart"></i></a>
+                                <a className="btn btn-outline-dark btn-square" href=""><i className="far fa-heart"></i></a>
+                                <a className="btn btn-outline-dark btn-square" href=""><i className="fa fa-sync-alt"></i></a>
+                                <a className="btn btn-outline-dark btn-square" href=""><i className="fa fa-search"></i></a>
+                            </div>
+                        </div>
+                        <div className="text-center py-4">
+                            <a className="h6 text-decoration-none text-truncate" href="">Product Name Goes Here</a>
+                            <div className="d-flex align-items-center justify-content-center mt-2">
+                                <h5>$123.00</h5><h6 className="text-muted ml-2"><del>$123.00</del></h6>
+                            </div>
+                            <div className="d-flex align-items-center justify-content-center mb-1">
+                                <small className="fa fa-star text-primary mr-1"></small>
+                                <small className="fa fa-star text-primary mr-1"></small>
+                                <small className="fa fa-star text-primary mr-1"></small>
+                                <small className="fa fa-star text-primary mr-1"></small>
+                                <small className="fa fa-star text-primary mr-1"></small>
+                                <small>(99)</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="product-item bg-light">
+                        <div className="product-img position-relative overflow-hidden">
+                            <img className="img-fluid w-100" src="img/product-4.jpg" alt=""/>
+                            <div className="product-action">
+                                <a className="btn btn-outline-dark btn-square" href=""><i className="fa fa-shopping-cart"></i></a>
+                                <a className="btn btn-outline-dark btn-square" href=""><i className="far fa-heart"></i></a>
+                                <a className="btn btn-outline-dark btn-square" href=""><i className="fa fa-sync-alt"></i></a>
+                                <a className="btn btn-outline-dark btn-square" href=""><i className="fa fa-search"></i></a>
+                            </div>
+                        </div>
+                        <div className="text-center py-4">
+                            <a className="h6 text-decoration-none text-truncate" href="">Product Name Goes Here</a>
+                            <div className="d-flex align-items-center justify-content-center mt-2">
+                                <h5>$123.00</h5><h6 className="text-muted ml-2"><del>$123.00</del></h6>
+                            </div>
+                            <div className="d-flex align-items-center justify-content-center mb-1">
+                                <small className="fa fa-star text-primary mr-1"></small>
+                                <small className="fa fa-star text-primary mr-1"></small>
+                                <small className="fa fa-star text-primary mr-1"></small>
+                                <small className="fa fa-star text-primary mr-1"></small>
+                                <small className="fa fa-star text-primary mr-1"></small>
+                                <small>(99)</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="product-item bg-light">
+                        <div className="product-img position-relative overflow-hidden">
+                            <img className="img-fluid w-100" src="img/product-5.jpg" alt=""/>
+                            <div className="product-action">
+                                <a className="btn btn-outline-dark btn-square" href=""><i className="fa fa-shopping-cart"></i></a>
+                                <a className="btn btn-outline-dark btn-square" href=""><i className="far fa-heart"></i></a>
+                                <a className="btn btn-outline-dark btn-square" href=""><i className="fa fa-sync-alt"></i></a>
+                                <a className="btn btn-outline-dark btn-square" href=""><i className="fa fa-search"></i></a>
+                            </div>
+                        </div>
+                        <div className="text-center py-4">
+                            <a className="h6 text-decoration-none text-truncate" href="">Product Name Goes Here</a>
+                            <div className="d-flex align-items-center justify-content-center mt-2">
+                                <h5>$123.00</h5><h6 className="text-muted ml-2"><del>$123.00</del></h6>
+                            </div>
+                            <div className="d-flex align-items-center justify-content-center mb-1">
+                                <small className="fa fa-star text-primary mr-1"></small>
+                                <small className="fa fa-star text-primary mr-1"></small>
+                                <small className="fa fa-star text-primary mr-1"></small>
+                                <small className="fa fa-star text-primary mr-1"></small>
+                                <small className="fa fa-star text-primary mr-1"></small>
+                                <small>(99)</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <Footer />
+        </>
     )
 }
 export default ProductDetail

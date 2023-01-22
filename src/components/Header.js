@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar"
-const Header = () => {
+const Header = ({handleModel}) => {
     const navigate = useNavigate();
     const handlelogout = () => {
         localStorage.clear();
@@ -23,8 +23,8 @@ const Header = () => {
                     <div className="btn-group">
                         <button type="button" className="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">My Account</button>
                         <div className="dropdown-menu dropdown-menu-right">
-                            <button className="dropdown-item" type="button">Sign in</button>
-                            <button className="dropdown-item" type="button">Sign up</button>
+                            <button onClick={()=>handleModel(1,true)} className="dropdown-item" type="button">Sign in</button>
+                            <button  onClick={()=>handleModel(2,true)} className="dropdown-item" type="button">Sign up</button>
                         </div>
                     </div>
                     <div className="btn-group mx-2">
